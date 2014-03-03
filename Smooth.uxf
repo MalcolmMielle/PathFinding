@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="12.2">
+  <zoom_level>8</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>0</x>
+      <y>416</y>
+      <w>232</w>
+      <h>432</h>
+    </coordinates>
+    <panel_attributes>Data
+--
+#_x : int
+#p : Point&lt;float&gt;
+#_G : float 
+#_H : float
+#_F : float
+#_parent : Data*
+#_Clist : bool
+#_Olist : bool
+#_Walkable : bool
+--
++Data()
++Data(x : int, l : int, w : bool)
++getG(): float
++getH() : float
++getF() : float
++getParent() : Data*
++getPoint() : Point&lt;float&gt;&amp;
+
++setF() : void
++setG(g : float) : void
++setH(h : float) : void
++setWalkable(w : bool) : void
++setParent(d : Data*) : void
++setX(i : int) : void
++setPoint(Point&lt;float&gt;&amp; p2) : void
++setPoint(i : int, l : int) : void
+
++isOlist() : bool
++isClist() : bool
++isWalkable() : bool
++setOlist() : void
++setClist() : void
++affiche() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>264</x>
+      <y>408</y>
+      <w>368</w>
+      <h>464</h>
+    </coordinates>
+    <panel_attributes>Astar
+--
+#_length : int
+#_width : int
+#_OpenList : std::deque&lt;Data*&gt;
+#_ClosedList : std::deque&lt;Data*&gt;
+#_Map : std::deque&lt;Data*&gt;
+#_current : Data*
+#_start : Data*
+#_end : Data*
+#_xcur : int
+#_newclean : int
+--
++Astar(s : Data*, e : Data*)
++Astar(s : Data*, e : Data*, m : std::vector&lt;Data*&gt;, l : int)
++pathFinding() : void
++quickSort(left : int, right :int)
++findUpdateAdjacent() : void
++clean0list() : void
++heuristic(Point&amp; p1)
++addO(d : Data*, i : int, j : int) : void
++addC(d : Data*) : void
++setMap(vector&lt;Data*&gt; : d, l : int, w : int) : void
++setLength(l : int) : void
++setWidth(w : int) : void
++setStart(d : Data*) : void
++setEnd(d : Data*) : void
++addMap(d : Data*) : void
++afficheOlist() : void
++afficheOlistsmall() : void
++afficheClistsmall() : void
++afficheClist() : void
++affiche() : void
++affiche_Verbose() : void
++drawMap() : void
++affichePath() : void
++realPosition (Data* d) : void
++eraseM() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>208</x>
+      <y>432</y>
+      <w>72</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>56;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>688</x>
+      <y>768</y>
+      <w>224</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>/Smoother/
+--
+--
+-Smoother()
+/-smoothIt(way : std::deque&lt;Data*&gt;&amp;)/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>688</x>
+      <y>904</y>
+      <w>464</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>Easy_smooth
+--
+--
+
++checkPoint(path : std::deque&lt;Data*&gt;) : std::deque&lt;Point&lt;float&gt;&amp;
++isColliding() : bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>864</x>
+      <y>192</y>
+      <w>272</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>Robot
+--
+#_dim_wheel : float
+#_shape : Forme*
+--
++Robot()
++Robot(int dim, int dw, Point&lt;float&gt; start)
++getDimWheel() : float
++getShape() const : const Forme&lt;float&gt;&amp;
++collide(rob : const Robot&amp;) const : bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>728</x>
+      <y>216</y>
+      <w>152</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>136;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>232</x>
+      <y>184</y>
+      <w>168</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Point
+--
+-_x : int
+-_y : int
+--
++Point()
++Point(x : int, y : int)
++getX() : int
++getY() : int
++setX(x : int) : void
++setY(y : int) : void
++operator=(p : Point&amp;) : void
++operator==(p : Point&amp;) : bool
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>416</x>
+      <y>0</y>
+      <w>240</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Rectangle
+--
+#_longueur : int
+#_largueur : int
+--
++Rectangle()
++Rectangle(lar : int, lon : int, Point cen)
++~Rectangle()
++getLargeur() : T
++getLongueur() : T
++collide(f : const Forme&lt;T&gt;&amp;) const : bool
++collide(f : const Rectangle&amp;) const : bool
++affiche() const : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>504</x>
+      <y>192</y>
+      <w>248</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>/Forme/
+--
+#_centre : Point
+--
++Forme()
++Forme(cen : const Point&amp;)
++~Forme()
++getCentre() : const Point&amp;
++setCentre(p : const Point&amp;) : void
++move(p : const Point&amp;) : void
++collide(const Forme&amp; f) const : bool
++collide(const Rectangle&amp; f) const : bool
++affiche() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>376</x>
+      <y>200</y>
+      <w>144</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>128;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>512</x>
+      <y>136</y>
+      <w>40</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;56;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>112</x>
+      <y>40</y>
+      <w>288</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>AddP
+--
+operator(){x : const Point&amp;, y : const Point&amp;) : Point</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>776</x>
+      <y>816</y>
+      <w>40</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;24;88</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1040</x>
+      <y>424</y>
+      <w>632</w>
+      <h>432</h>
+    </coordinates>
+    <panel_attributes>Environnement
+--
+#_obs : std::vector&lt;Obstacle&gt;
+#_rob : std::vector&lt;Robot&gt;
+#_path : std::vector&lt;Data*&gt;
+#_smoo : Smoother*
+#_astar : Astar
+#_map : Map
+--
++Environnement(ob : std::vector&lt;Data*&gt;, rob : std::vector&lt;Robot*&gt;, sm : Smoother*, a : const Astar&amp;)
++Environnement(map : const Map&amp;, sm :Smoother*, as : const Astar&amp;)
++create(std::vector&lt;Obstacle&gt;&amp; obs, std::vectore&lt;Robot&gt;&amp; rob) : void
++create() : void
++path() : void
++smooth() : void
+
++getMap() : const Map&amp;
++getObs() : std:vector&lt;Obstacle&gt;
++getRobot() : std:vector&lt;Robot&gt;
++getPath() : std:vector&lt;Data*&gt;
++getSmoo() : Smoother*
++getAstar() : const Astar&amp;
++set(Smoother* s) : void
++set(a : const Astar&amp;) : void
+
++add(const Obstacle&amp;) : void
++add(const Robot&amp;) : void
++set( std::vector&lt;Data*&gt; p) : void
++set(Map m) : void
++set(Astar a) : voi
++set(Smoother* s) : void
+
++eraseObstacles()
++eraseRobots()
+
++afficheObstacles()
++afficheRobots()
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>864</x>
+      <y>40</y>
+      <w>232</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>Obstacle
+--
+#_shape : Forme*
+--
++Obstacle()
++Obstacle(dim : int, p: Point&lt;float&gt;&amp;)
++Obstacle(dim : int, dim2 : int, p: Point&lt;float&gt;&amp;)
++getShape() const : const Forme&amp;
++affiche()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>688</x>
+      <y>80</y>
+      <w>192</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>176;24;24;24;24;112</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1072</x>
+      <y>72</y>
+      <w>208</w>
+      <h>368</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>192;352;192;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1112</x>
+      <y>200</y>
+      <w>112</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>96;224;96;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>776</x>
+      <y>648</y>
+      <w>280</w>
+      <h>136</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>264;24;24;24;24;120</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>608</x>
+      <y>472</y>
+      <w>448</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>432;24;24;24</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>104</x>
+      <y>520</y>
+      <w>952</w>
+      <h>408</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>936;24;552;24;552;352;424;392;24;352;24;328</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1760</x>
+      <y>432</y>
+      <w>568</w>
+      <h>416</h>
+    </coordinates>
+    <panel_attributes>Map
+--
+#_map : std::deque&lt;int&gt;
+#_length : int
+#_width : int
+#_robot : int
+#_arrival : Point
+#_dimRob : int
+#_dimWe : int
+--
++Map()
++Map(m :const std::deque&lt;float&gt;&amp;, l : int, w : int, s : Point, e : Point, dim : int, dimW : int)
++getLength() : int
++getWidth() : int
++getMap() : std::deque&lt;float&gt;&amp;
++get(i : int) : int
++get(xx: int, yy : int) : void
++affiche() : void
++set(where : int, what : int) : void
++loadNew(std::deque&lt;float&gt;&amp; m, l : int, w :int) : void
++getStart() : Point&lt;float&gt;&amp; 
++getEnd() : Point&lt;float&gt;&amp; 
++setStart(const Point&amp; r) : void
++setEnd(const Point&amp; a) : void
++getDim() : int
++setDim(i : int) : void
++getDimW() : int
++setDimW(i : int) : void
+	
++vec2real(i : int) : Point&amp;
++real2vec(p : const Point&amp;) : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1648</x>
+      <y>472</y>
+      <w>128</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>24;24;112;24</additional_attributes>
+  </element>
+</diagram>
